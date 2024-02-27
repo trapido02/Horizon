@@ -6,6 +6,7 @@
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow* window);
 
 namespace Engine {
 
@@ -34,16 +35,26 @@ namespace Engine {
 
         while (!glfwWindowShouldClose(window))
         {
+            processInput(window);
+            
             glClear(GL_COLOR_BUFFER_BIT);
 
+            // Swap buffers and poll events
             glfwSwapBuffers(window);
-
             glfwPollEvents();
         }
 
         glfwTerminate();
 	}
 
+}
+
+void processInput(GLFWwindow* window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
