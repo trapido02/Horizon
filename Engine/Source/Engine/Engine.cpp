@@ -1,8 +1,11 @@
 #include "Engine.h"
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 namespace Engine {
 
@@ -21,6 +24,13 @@ namespace Engine {
         }
 
         glfwMakeContextCurrent(window);
+        glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+        {
+            std::cout << "Failed to initialize GLAD" << std::endl;
+            return;
+        }
 
         while (!glfwWindowShouldClose(window))
         {
@@ -34,4 +44,9 @@ namespace Engine {
         glfwTerminate();
 	}
 
+}
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
 }

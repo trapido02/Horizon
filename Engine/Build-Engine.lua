@@ -5,12 +5,13 @@ project "Engine"
 	targetdir "Binaries/%{cfg.buildcfg}"
 	staticruntime "off"
 
-	files { "Source/**.h", "Source/**.cpp" }
+	files { "Source/**.h", "Source/**.cpp", "vendor/glad/src/glad.c" }
 
 	includedirs
 	{
 		"Source",
-		"vendor/glfw/include"
+		"vendor/glfw/include",
+		"vendor/glad/include"
 	}
 
 	libdirs
