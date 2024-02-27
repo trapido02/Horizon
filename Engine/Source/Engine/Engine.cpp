@@ -34,7 +34,7 @@ namespace Engine {
             return;
         }
 
-        Shader myShader("../../../Editor/Source/Shaders/shader.vert", "../../../Editor/Source/Shaders/shader.frag");
+        Shader myShader("../Editor/Source/Shaders/shader.vert", "../Editor/Source/Shaders/shader.frag");
 
         float vertices[] = {
             -0.5f, -0.5f, 0.0f, // left  

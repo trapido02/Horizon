@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace Engine {
 
 	class Shader
@@ -9,6 +11,9 @@ namespace Engine {
 		
 		Shader(const char* vertexPath, const char* fragmentPath);
 		void use();
+
+	private:
+		void checkCompileErrors(unsigned int shader, std::string type);
 	};
 
 }
