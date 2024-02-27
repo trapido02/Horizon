@@ -2,5 +2,5 @@
 
 int main()
 {
-	Engine::PrintHelloWorld();
+	Engine::CreateWindow();
 }

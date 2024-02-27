@@ -2,6 +2,6 @@
 
 namespace Engine {
 
-	void PrintHelloWorld();
+	void CreateWindow();
 
 }

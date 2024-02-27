@@ -1,37 +1,49 @@
 project "Engine"
-   kind "StaticLib"
-   language "C++"
-   cppdialect "C++20"
-   targetdir "Binaries/%{cfg.buildcfg}"
-   staticruntime "off"
+	kind "StaticLib"
+	language "C++"
+	cppdialect "C++20"
+	targetdir "Binaries/%{cfg.buildcfg}"
+	staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp" }
+	files { "Source/**.h", "Source/**.cpp" }
 
-   includedirs
-   {
-      "Source"
-   }
+	includedirs
+	{
+		"Source",
+		"vendor/glfw/include"
+	}
 
-   targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
-   objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
+	libdirs
+	{
+		"vendor/glfw/lib-vc2022"
+	}
 
-   filter "system:windows"
-       systemversion "latest"
-       defines { }
+	links
+	{
+		"glfw3.lib",
+		"opengl32.lib"
+	}
 
-   filter "configurations:Debug"
-       defines { "DEBUG" }
-       runtime "Debug"
-       symbols "On"
+	targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
+	objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
 
-   filter "configurations:Release"
-       defines { "RELEASE" }
-       runtime "Release"
-       optimize "On"
-       symbols "On"
+	filter "system:windows"
+		systemversion "latest"
+		defines { }
 
-   filter "configurations:Dist"
-       defines { "DIST" }
-       runtime "Release"
-       optimize "On"
-       symbols "Off"
+	filter "configurations:Debug"
+		defines { "DEBUG" }
+		runtime "Debug"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines { "RELEASE" }
+		runtime "Release"
+		optimize "On"
+		symbols "On"
+
+	filter "configurations:Dist"
+		defines { "DIST" }
+		runtime "Release"
+		optimize "On"
+		symbols "Off"
