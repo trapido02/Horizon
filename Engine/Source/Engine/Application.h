@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Window.h"
+
 namespace Engine {
 
 	class Application
@@ -7,6 +9,8 @@ namespace Engine {
 	public:
 		Application();
 		void Run();
+
+		Engine::Window* m_Window;
 	};
 
 }
