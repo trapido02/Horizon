@@ -6,7 +6,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 namespace Engine {
 
-	Window::Window(int width, int height, const std::string title)
+	Window::Window(int width, int height, const std::string title) : m_Window(nullptr)
 	{
 		Window::width = width;
 		Window::height = height;
