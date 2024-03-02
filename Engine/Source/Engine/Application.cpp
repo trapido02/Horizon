@@ -14,7 +14,6 @@ namespace Engine {
 	{
 		while (true)
 		{
-			std::cout << "Test." << std::endl;
 			m_Window->OnUpdate();
 		};
 		// Will eventually run functions to update window etc.

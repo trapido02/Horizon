@@ -1,5 +1,8 @@
 #include "Window.h"
 #include "Application.h"
+#include "Events/ResizeWindowEvent.h"
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 namespace Engine {
 
@@ -26,6 +29,7 @@ namespace Engine {
 			return;
 		}
 		glfwMakeContextCurrent(m_Window);
+		glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
 	}
 
 	void Window::OnUpdate()
@@ -35,4 +39,9 @@ namespace Engine {
 		glfwPollEvents();
 	}
 
+}
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	Engine::ResizeWindowEvent e(width, height);
 }
