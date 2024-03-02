@@ -12,12 +12,25 @@ project "Editor"
 		"Source",
 
 		-- Include Engine
-		"../Engine/Source"
+		"../Engine/Source",
+
+		-- Include GLFW (This is only a temporary solution until we can switch to cmake where we can choose to add the dependency implicitly)
+		"../Engine/Vendor/glfw/include"
+	}
+
+	libdirs
+	{
+		-- Temporary
+		"../Engine/Vendor/glfw/lib-vc2022"
 	}
 
 	links
 	{
-		"Engine"
+		"Engine",
+
+		-- Temporary
+		"glfw3.lib",
+		"opengl32.lib"
 	}
 
 	targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
